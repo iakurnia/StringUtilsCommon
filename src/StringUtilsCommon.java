@@ -7,6 +7,10 @@ import java.util.UUID;
 
 public class StringUtilsCommon {
 
+    public  StringUtilsCommon(){
+
+    }
+
     // #1. check hasValue parameter String
     public static boolean hasValue(String param1) {
         return param1 != null && !ConstansValue.EMPTY_STRING.equals(param1.trim());
@@ -22,15 +26,17 @@ public class StringUtilsCommon {
         return param1 == null ? ConstansValue.EMPTY_STRING : param1;
     }
 
-    // #4.
+    // #4. Value Firt Character be Upper Case
     public static String upperCaseFirstCharacter(String param1) {
         return hasValue(param1) ? param1.substring(0, 1).toUpperCase() + param1.substring(1) : param1;
     }
 
+    // #5. Value Firt Character be Lower Case
     public static String lowerCaseFirstCharacter(String param1) {
         return hasValue(param1) ? param1.substring(0, 1).toLowerCase() + param1.substring(1) : param1;
     }
 
+    // #6. Pre Pad Value Customize value with parameter character
     public static String prePad(String param1, char param2, int param3) {
         if (param3 < param1.length()) {
             return param1;
@@ -47,6 +53,7 @@ public class StringUtilsCommon {
         }
     }
 
+    // #7. post Pad Value Customize value with parameter character
     public static String postPad(String param1, char param2, int param3) {
         if (param3 < param1.length()) {
             return param1;
@@ -61,6 +68,7 @@ public class StringUtilsCommon {
         }
     }
 
+    // #8. chop String value in list in according with what yout want in parameter type String
     public static List<String> chopString(String param1) {
         ArrayList var1 = null;
         if (hasValue(param1)) {
@@ -75,6 +83,7 @@ public class StringUtilsCommon {
         return var1;
     }
 
+    // #9. chop String value in list in according with what yout want in parameter type Byte
     public static List<String> chopByte(byte[] param1) {
         ArrayList var1 = null;
         if (hasValue(param1) && param1.length > 0) {
@@ -93,6 +102,7 @@ public class StringUtilsCommon {
         return var1;
     }
 
+    // #10. glue String in parameter type list
     public static String glueString(List<String> param0) {
         StringBuilder var1 = new StringBuilder();
         if (hasValue(param0)) {
@@ -106,6 +116,7 @@ public class StringUtilsCommon {
         return var1.toString();
     }
 
+    // #11. glue String in parameter type byte
     public static byte[] glueByte(List<byte[]> param0) {
         byte[] var1 = null;
         if (hasValue(param0)) {
@@ -126,20 +137,24 @@ public class StringUtilsCommon {
         return var1;
     }
 
+    // #12. generate random String
     public static String generate() {
         // generate random
         return UUID.randomUUID().toString();
     }
 
+    // #13. If hasvalue, that value append Wildcard
     public static String appendWildcard(Object var0) {
         // Usualy User Query parameter
         return hasValue(var0) ? ConstansValue.WILDCARD + var0.toString() + ConstansValue.WILDCARD : ConstansValue.WILDCARD;
     }
 
+    // #14. If value contain underscore, that value relapce with !_
     public static String escapeUnderscore(String var0) {
         return hasValue(var0) ? var0.replace("_", "!_") : "";
     }
 
+    // #15. Format Decimal Standarization_
     public static String formatDecimal(BigDecimal param0) {
         DecimalFormat var1 = new DecimalFormat("###,###,##0.00");
         return var1.format(param0);
