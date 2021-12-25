@@ -1,0 +1,2 @@
+# StringUtilsCommon
+Various String Utils
